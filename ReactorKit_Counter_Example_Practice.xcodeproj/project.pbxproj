@@ -13,6 +13,11 @@
 		2C95A3FF2854426300414515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C95A3FD2854426300414515 /* Main.storyboard */; };
 		2C95A4012854426600414515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C95A4002854426600414515 /* Assets.xcassets */; };
 		2C95A4042854426600414515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C95A4022854426600414515 /* LaunchScreen.storyboard */; };
+		2C95A40D2854436F00414515 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C95A40C2854436F00414515 /* ReactorKit */; };
+		2C95A4102854439C00414515 /* BonMot in Frameworks */ = {isa = PBXBuildFile; productRef = 2C95A40F2854439C00414515 /* BonMot */; };
+		2C95A413285443DE00414515 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C95A412285443DE00414515 /* SnapKit */; };
+		2C95A416285443F700414515 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2C95A415285443F700414515 /* Then */; };
+		2C95A4192854441B00414515 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2C95A4182854441B00414515 /* RxCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C95A413285443DE00414515 /* SnapKit in Frameworks */,
+				2C95A40D2854436F00414515 /* ReactorKit in Frameworks */,
+				2C95A4192854441B00414515 /* RxCocoa in Frameworks */,
+				2C95A4102854439C00414515 /* BonMot in Frameworks */,
+				2C95A416285443F700414515 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +93,13 @@
 			dependencies = (
 			);
 			name = ReactorKit_Counter_Example_Practice;
+			packageProductDependencies = (
+				2C95A40C2854436F00414515 /* ReactorKit */,
+				2C95A40F2854439C00414515 /* BonMot */,
+				2C95A412285443DE00414515 /* SnapKit */,
+				2C95A415285443F700414515 /* Then */,
+				2C95A4182854441B00414515 /* RxCocoa */,
+			);
 			productName = ReactorKit_Counter_Example_Practice;
 			productReference = 2C95A3F42854426300414515 /* ReactorKit_Counter_Example_Practice.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,13 @@
 				Base,
 			);
 			mainGroup = 2C95A3EB2854426300414515;
+			packageReferences = (
+				2C95A40B2854436F00414515 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				2C95A40E2854439C00414515 /* XCRemoteSwiftPackageReference "BonMot" */,
+				2C95A411285443DD00414515 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				2C95A414285443F700414515 /* XCRemoteSwiftPackageReference "Then" */,
+				2C95A4172854441B00414515 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 2C95A3F52854426300414515 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,6 +319,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +348,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +384,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C95A40B2854436F00414515 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		2C95A40E2854439C00414515 /* XCRemoteSwiftPackageReference "BonMot" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rightpoint/BonMot.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		2C95A411285443DD00414515 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		2C95A414285443F700414515 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		2C95A4172854441B00414515 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C95A40C2854436F00414515 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C95A40B2854436F00414515 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		2C95A40F2854439C00414515 /* BonMot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C95A40E2854439C00414515 /* XCRemoteSwiftPackageReference "BonMot" */;
+			productName = BonMot;
+		};
+		2C95A412285443DE00414515 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C95A411285443DD00414515 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		2C95A415285443F700414515 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C95A414285443F700414515 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		2C95A4182854441B00414515 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C95A4172854441B00414515 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C95A3EC2854426300414515 /* Project object */;
 }
