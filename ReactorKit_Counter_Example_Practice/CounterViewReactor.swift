@@ -24,6 +24,9 @@ final class CounterViewReactor: Reactor {
   enum Mutation {
     case increaseValue // increase라는 액션이 들어왔을 때는 value를 1 증가시키기 위해 increaseValue라는 mutation을 만듬
     case decreaseValue // decrease라는 액션이 들어왔을 때는 value를 1 감소시키기 위해 decreaseValue라는 mutation을 만듬
+    case setLoading(Bool) // 상태가 추가됐기 때문에 이 상태를 변화시키기 위핸 Mutation도 하나 추가한다.
+    // => Bool 타입을 associated value로 가지는 setLoading이라는 Mutation
+    // 로딩이 어떻게 시작하는지 view는 몰라도 되기 때문에 Action은 건들지 않는다.
   }
   
   /// 상태
