@@ -134,5 +134,10 @@ class CounterView: UIView, ReactorKit.View {
       .map { "\($0)" } // int라 label의 필요한 문자열로 만들어준다.
       .bind(to: valueLabel.rx.text) // valueLabel.rx.text에 바인딩한다.
       .disposed(by: disposeBag)
+    
+    reactor.state.map { $0.isLoading }
+      .distinctUntilChanged() // 값이 바뀌는 경우에만 UI를 업데이트하기 위해 사용
+      .bind(to: activityIndicator.rx.isAnimating) // activity Indicator의 isAnimating 속성을 isLoading과 동일한 속성으로 만든다.
+      .disposed(by: disposeBag)
   }
 }
