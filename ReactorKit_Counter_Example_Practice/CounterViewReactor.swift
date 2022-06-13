@@ -29,6 +29,7 @@ final class CounterViewReactor: Reactor {
   /// 상태
   struct State {
     var value: Int = 0 // 현재값을 전달
+    var isLoading: Bool = false // 로딩중이라는 상태를 나타내기 위해 isLoading이라는 Bool 속성 추가
   }
   
   let initialState: State = State()
