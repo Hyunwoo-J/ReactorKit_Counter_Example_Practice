@@ -23,8 +23,9 @@ final class CounterViewReactor: Reactor {
     
   }
   
+  /// 상태
   struct State {
-    
+    var value: Int = 0 // 현재값을 전달
   }
   
   let initialState: State = State()
