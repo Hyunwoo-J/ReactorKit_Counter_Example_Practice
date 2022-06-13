@@ -83,6 +83,9 @@ final class CounterViewReactor: Reactor {
       
     case .decreaseValue:
       newState.value -= 1
+    
+    case let .setLoading(isLoading): // 새로운 Mutation이 추가됐기 때문에 Reduce에서도 그에 대한 처리를 해줘야 한다.
+      newState.isLoading = isLoading // newState의 isLoading이라는 속성을 enum의 Associated Value안에 있는 값으로 바꿔치기 한다.
     }
     
     return newState // 새 상태를 반환
