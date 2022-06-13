@@ -19,6 +19,8 @@
 		2CDE896F28562638005B53DA /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE896E28562638005B53DA /* UIViewController+Preview.swift */; };
 		2CDE897128562688005B53DA /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE897028562688005B53DA /* UIView+Preview.swift */; };
 		2CDE8974285626E8005B53DA /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE8973285626E8005B53DA /* CounterView.swift */; };
+		D2B563442856C6D4002A5A39 /* CounterViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B563432856C6D4002A5A39 /* CounterViewReactor.swift */; };
+		D2B5634828570B14002A5A39 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5634728570B14002A5A39 /* CounterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		2CDE896E28562638005B53DA /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		2CDE897028562688005B53DA /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
 		2CDE8973285626E8005B53DA /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		D2B563432856C6D4002A5A39 /* CounterViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewReactor.swift; sourceTree = "<group>"; };
+		D2B5634728570B14002A5A39 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			children = (
 				2CDE896D28562622005B53DA /* Extensions */,
 				2CDE8972285626D7005B53DA /* Previews */,
+				D2B5634728570B14002A5A39 /* CounterViewController.swift */,
+				D2B563432856C6D4002A5A39 /* CounterViewReactor.swift */,
 				2C95A3F72854426300414515 /* AppDelegate.swift */,
 				2C95A3F92854426300414515 /* SceneDelegate.swift */,
 				2C95A4002854426600414515 /* Assets.xcassets */,
@@ -182,7 +188,9 @@
 			files = (
 				2C95A3F82854426300414515 /* AppDelegate.swift in Sources */,
 				2C95A3FA2854426300414515 /* SceneDelegate.swift in Sources */,
+				D2B5634828570B14002A5A39 /* CounterViewController.swift in Sources */,
 				2CDE897128562688005B53DA /* UIView+Preview.swift in Sources */,
+				D2B563442856C6D4002A5A39 /* CounterViewReactor.swift in Sources */,
 				2CDE896F28562638005B53DA /* UIViewController+Preview.swift in Sources */,
 				2CDE8974285626E8005B53DA /* CounterView.swift in Sources */,
 			);
