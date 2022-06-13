@@ -51,4 +51,24 @@ final class CounterViewReactor: Reactor {
       return Observable.just(Mutation.decreaseValue)
     }
   }
+  
+  
+  /// 이전 상태를 하나 받고 mutation을 하나 받는다. 그 후, 다음 상태를 반환한다.
+  /// - Parameters:
+  ///   - state: 이전 상태
+  ///   - mutation: mutation
+  /// - Returns: 다음 상태
+  func reduce(state: State, mutation: Mutation) -> State {
+    // Mutation 또한 enum으로 정의했기 때문에 switch case로 분기 처리가 가능하다.
+    var newState = state // 새로운 상태를 만들기 위해서 newState로 복사한다.
+    switch mutation {
+    case .increaseValue:
+      newState.value += 1
+      
+    case .decreaseValue:
+      newState.value -= 1
+    }
+    
+    return newState // 새 상태를 반환
+  }
 }
