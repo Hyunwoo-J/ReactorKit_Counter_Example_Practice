@@ -32,4 +32,23 @@ final class CounterViewReactor: Reactor {
   }
   
   let initialState: State = State()
+  
+  
+  /// Action을 받아서 mutation의 옵저버블을 반환하는 함수
+  /// - Parameter action: 액션
+  /// - Returns: mutation의 옵저버블
+  func mutate(action: Action) -> Observable<Mutation> {
+    // Action은 enum으로 정의했기 때문에 switch case로 분기 처리가 가능하다.
+    switch action {
+    case .increase: // 만약, increase라는 action이 들어왔을 때는 decreaseValue라는 Mutation을 반환시키기 위해서
+      return Observable.just(Mutation.increaseValue)
+      /*:
+       * just: 옵저버블을 만드는 연산자
+        1. 파라미터로 전달된 값 하나를 방출한다.
+        2. 하나의 요소를 방출하고 끝내고 싶을 때 사용한다.
+       */
+    case .decrease:
+      return Observable.just(Mutation.decreaseValue)
+    }
+  }
 }
