@@ -45,14 +45,26 @@ final class CounterViewReactor: Reactor {
     // Action은 enum으로 정의했기 때문에 switch case로 분기 처리가 가능하다.
     switch action {
     case .increase: // 만약, increase라는 action이 들어왔을 때는 decreaseValue라는 Mutation을 반환시키기 위해서
-      return Observable.just(Mutation.increaseValue)
+      // 3가지 Mutation을 직렬로 반환
+      // concat이라는 메소드에 배열로 넘어가게 되면 하나가 끝나고 다음 것이 실행되고 그게 끝나야 또 다음 것이 실행된다. -> 순차적 실행
+      return Observable.concat([
+        Observable.just(Mutation.setLoading(true)),
+        Observable.just(Mutation.increaseValue)
+          .delay(.seconds(1), scheduler: MainScheduler.instance), // 1초 딜레이 발생
+        Observable.just(Mutation.setLoading(false))
+      ])
       /*:
        * just: 옵저버블을 만드는 연산자
         1. 파라미터로 전달된 값 하나를 방출한다.
         2. 하나의 요소를 방출하고 끝내고 싶을 때 사용한다.
        */
     case .decrease:
-      return Observable.just(Mutation.decreaseValue)
+      return Observable.concat([
+        Observable.just(Mutation.setLoading(true)),
+        Observable.just(Mutation.decreaseValue)
+          .delay(.seconds(1), scheduler: MainScheduler.instance), // 1초 딜레이 발생
+        Observable.just(Mutation.setLoading(false))
+      ])
     }
   }
   
