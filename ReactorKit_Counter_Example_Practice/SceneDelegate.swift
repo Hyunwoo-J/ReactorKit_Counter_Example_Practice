@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
     window?.windowScene = windowScene
     
-    let counterViewController = CounterViewController()
+    let counterViewController = CounterBuilder.build()
     
     window?.rootViewController = counterViewController
     window?.makeKeyAndVisible()

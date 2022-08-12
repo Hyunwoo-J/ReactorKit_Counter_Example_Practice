@@ -8,13 +8,26 @@
 import Then
 import SnapKit
 import UIKit
+import ReactorKit
+import RxCocoa
+import RxSwift
 
 
-final class CounterViewController: UIViewController {
+final class CounterViewController: UIViewController, ReactorKit.View {
   
-  private let counterView = CounterView()
+  typealias Reactor = CounterViewReactor
+  
+  var disposeBag: DisposeBag = .init()
+  
+  private let contentView = CounterView()
   
   private let counterViewReactor = CounterViewReactor()
+  
+  
+  override func loadView() {
+    super.loadView()
+    self.view = self.contentView
+  }
   
   
   // 필수 구현
@@ -31,18 +44,54 @@ final class CounterViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     self.view.backgroundColor = .white
-    
-    self.view.addSubview(counterView)
-    
-    self.counterView.snp.makeConstraints {
-      $0.edges.equalToSuperview()
-    }
-    
-    // CounterView의 bind라는 메소드는 CounterView에 있는 reactor라는 속성에 새로운 값이 들어왔을 때만 호출되기 때문에
-    self.counterView.reactor = counterViewReactor // 의존성 주입(inject reactor)
-    // 생성한 counterViewReactor를 counterView에 있는 reactor라는 속성에다가 assign만 해주게 되면 아까 작성한 bind라는 메소드가 실행이 된다.
-    // 그렇게 되면 RxSwift에 따라서 Action과 State 바인딩이 발생을 하고 실제로 + 버튼을 누를 때 1이 올라가고 - 버튼을 누를 때 1이 내려간다.
+  }
+  
+  /// Action Binding과 State Binding을 작성한다.
+  /// CounterViewController와 대응되는 CounterViewReactor를 함수 파라미터로 받도록 정의
+  /// - Parameter reator: 해당 vc와 대응되는 reator
+  func bind(reactor: Reactor) {
+    self.bindIncreaseButton(reactor: reactor)
+    self.bindDecreaseButton(reactor: reactor)
+    self.bindValueLabel(reactor: reactor)
+    self.bindLoading(reactor: reactor)
+  }
+  
+  // MARK: Bind Action
+  
+  private func bindIncreaseButton(reactor: Reactor) {
+    self.contentView.increaseButton.rx.tap // increaseButton이 눌렸을 때, (tap이라는 사용자 interaction이 들어왔을 때)
+      .map { Reactor.Action.increase } // -> Reactor.Action에 정의된 increase라는 액션으로 바꾸고
+      .bind(to: reactor.action) // -> 그것을 다시 reactor의 action이라는 곳에 바인딩한다.
+      .disposed(by: disposeBag)
+  }
+  
+  private func bindDecreaseButton(reactor: Reactor) {
+    self.contentView.decreaseButton.rx.tap // decreaseButton이 눌렸을 때, (tap이라는 사용자 interaction이 들어왔을 때)
+      .map { Reactor.Action.decrease } // -> Reactor.Action에 정의된 decrease라는 액션으로 바꾸고
+      .bind(to: reactor.action) // -> 그것을 다시 reactor의 action이라는 곳에 바인딩한다.
+      .disposed(by: disposeBag)
+  }
+  
+  // 이렇게 하면 increaseButton과 decreaseButton이 눌렸을 때 각각 increase 또는 decrease라는 action이 reactor에 전달이 되게 된다.
+  // 그러면 CounterViewReactor에서 작성했던 mutate가 먼저 실행이 되고 그리고 다시 reduce가 실행이 되고
+  // 새로운 상태가 다시 뷰로 전달이 된다. ===> State Binding 작성
+  
+  // MARK: Bind State
+  // 그 상태(뷰에 전달된 새로운 상태)를 view에 렌더링하기 위해 바인딩을 한다.
+  
+  private func bindValueLabel(reactor: Reactor) {
+    reactor.state.map { $0.value } // reactor에 state라는 옵저버블이 있는데 여기서 value라는 속성을 받아오는 코드를 작성
+      .distinctUntilChanged() // 값이 바뀌는 경우에만 label을 업데이트하기 위해 distinctUntilChanged 연산자 사용
+      .map { "\($0)" } // int라 label의 필요한 문자열로 만들어준다.
+      .bind(to: self.contentView.valueLabel.rx.text) // valueLabel.rx.text에 바인딩한다.
+      .disposed(by: disposeBag)
+  }
+  
+  private func bindLoading(reactor: Reactor) {
+    reactor.state.map { $0.isLoading }
+      .distinctUntilChanged() // 값이 바뀌는 경우에만 UI를 업데이트하기 위해 사용
+      .bind(to: self.contentView.activityIndicator.rx.isAnimating) // activity Indicator의 isAnimating 속성을 isLoading과 동일한 속성으로 만든다.
+      .disposed(by: disposeBag)
   }
 }
